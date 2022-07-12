@@ -174,14 +174,28 @@ using UnityEngine;
 
 
 //Decryption 
-char Decrypt(char letter)
+public char Decrypt(char letter)
     {
+
+        int offset = (int) 'a';
+
         char swap1 = SearchSwapDecrypt(rotor5, letter);
-        char swap2 = SearchSwapDecrypt(rotor4, swap1);
-        char swap3 = SearchSwapDecrypt(rotor3, swap2);
-        char swap4 = SearchSwapDecrypt(rotor2, swap3);
-        char swap5 = SearchSwapDecrypt(rotor1, swap4);
-        return swap5;
+        //print(swap1);
+        int swap2 = SearchByPositionDecrypt(rotor4, swap1);
+        //print(swap2);
+        int swap3 = SearchByPositionDecrypt(rotor3, (char) (swap2 + offset));
+        //print(swap3);
+        int swap4 = SearchByPositionDecrypt(rotor2, (char) (swap3 + offset));
+        //print(swap4);
+        int swap5 = SearchByPositionDecrypt(rotor1, (char) (swap4 + offset));
+        //print(swap5);
+        return (char) (swap5 + offset);
+        // char swap1 = SearchSwapDecrypt(rotor5, letter);
+        // char swap2 = SearchSwapDecrypt(rotor4, swap1);
+        // char swap3 = SearchSwapDecrypt(rotor3, swap2);
+        // char swap4 = SearchSwapDecrypt(rotor2, swap3);
+        // char swap5 = SearchSwapDecrypt(rotor1, swap4);
+        // return swap5;
     }
 
   //Stepping Control
@@ -378,5 +392,24 @@ public int SearchByPosition(char[,] arr, char c)
     }
     return -1;
 }
+
+public int SearchByPositionDecrypt(char[,] arr, char c)
+{
+    int offset = (int) 'a';
+    for (int i = 0; i < 26; i++) {
+        if (arr[i,1] == c) {
+            return (int) arr[i,0] - offset;
+        }
+    }
+    return -1;
+}
+
+// public void InitializeDecrypt(int keystrokes)
+// {
+//     for(int i = 0; i < keystrokes - 1; i++)
+//     {
+
+//     }
+// }
 
 }
