@@ -23,88 +23,118 @@ using UnityEngine;
         char[,] rotor5 = { { 'a', 'n' }, { 'b', 'x' }, { 'c', 'y' }, { 'd', 'd' }, { 'e', 'o' }, { 'f', 'p' }, { 'g', 'b' }, { 'h', 'l' }, { 'i', 'v' }, { 'j', 'u' }, { 'k', 'q' }, { 'l', 'j' }, { 'm', 'r' }, { 'n', 'w' }, { 'o', 'k' }, { 'p', 'f' }, { 'q', 't' }, { 'r', 'e' }, { 's', 'h' }, { 't', 'a' }, { 'u', 'g' }, { 'v', 'c' }, { 'w', 'z' }, { 'x', 'm' }, { 'y', 'i' }, { 'z', 's' } };
 
         //Index Rotors
-        int[,] rotora = { { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 } };
-        int[,] rotorb = { { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 } };
-        int[,] rotorc = { { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 } };
-        int[,] rotord = { { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 } };
-        int[,] rotore = { { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 } };
+        int[,] rotora = { { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 } };
+        int[,] rotorb = { { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 } };
+        int[,] rotorc = { { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 } };
+        int[,] rotord = { { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 } };
+        int[,] rotore = { { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 } };
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-      void something(string[] args)
+      public void UpdateRotors()
     {
         //Control Rotors //need to change
         //stationary
-        
-
-        //User input
-        // Console.WriteLine("Enter letter");
-        // char letter = Console.ReadLine();
-
-        // Cipher Rotor Logic
-        //feed user input through cipher rotors
-        
-        // char swap1 = SearchSwap(rotor1, letter);
-        // char swap2 = SearchSwap(rotor2, swap1);
-        // char swap3 = SearchSwap(rotor3, swap2);
-        // char swap4 = SearchSwap(rotor4, swap3);
-        // char swap5 = SearchSwap(rotor5, swap4);
-        
-        // This section moved to different script
-        
-        //Control Rotor Logic
-        int keystrokes = 0;
-        //on every click keystrokes+1;
-         Rotate(rotor8);
-         if(keystrokes%26 == 0){
-         Rotate(rotor7); 
-         }
-         if(keystrokes%676 == 0){
-         Rotate(rotor9);
-        }
 
         //swapping letters through control rotors
         //swap F
-        char swapf = LetterSwap('f',rotor6,rotor7,rotor8,rotor9,rotor10);
+        char swapf = LetterSwap('f');
+        //print("swapf " + swapf);
         //swap G
-        char swapg = LetterSwap('g', rotor6, rotor7, rotor8, rotor9, rotor10);
+        char swapg = LetterSwap('g');
+        //print("swapg " + swapg);
         //swap H
-        char swaph = LetterSwap('h', rotor6, rotor7, rotor8, rotor9, rotor10);
+        char swaph = LetterSwap('h');
+        //print("swaph " + swaph);
         //swap I
-        char swapi = LetterSwap('i', rotor6, rotor7, rotor8, rotor9, rotor10);
+        char swapi = LetterSwap('i');
+        //print("swapi " + swapi);
 
       //index input logic
        int iil1 = IndexInputLogic(swapf);
+        //print("iil1 " + iil1);
        int iil2 = IndexInputLogic(swapg);
+       // print("iil2 " + iil2);
        int iil3 = IndexInputLogic(swaph);
+       // print("iil3 " + iil3);
        int iil4 = IndexInputLogic(swapi);
+       // print("iil4 " + iil4);
 
+        bool flag2 = true;
+        bool flag3 = true;
+        bool flag4 = true;
+
+        int irl2 = 0;
+        int irl3 = 0;
+        int irl4 = 0;
+        int iol2 = 0;
+        int iol3 = 0;
+        int iol4 = 0;
       //here pass Indexinputlogicnumbers through index rotors
-       int irl1 = IndexRotors(iil1,rotora,rotorb,rotorc,rotord,rotore);
-       int irl2 = IndexRotors(iil2, rotora, rotorb, rotorc, rotord, rotore);
-       int irl3 = IndexRotors(iil3, rotora, rotorb, rotorc, rotord, rotore);
-       int irl4 = IndexRotors(iil4, rotora, rotorb, rotorc, rotord, rotore);
+       int irl1 = IndexRotors(iil1);
+            print("irl1 " + irl1);
+       if(iil2 != iil1){
+            irl2 = IndexRotors(iil2);
+            print("irl2 " + irl2);
+       } else {
+            flag2 = false;
+       }
+       if(iil3 != iil1 && iil3 != iil2){
+            irl3 = IndexRotors(iil3);
+            print("irl3 " + irl3);
+       } else {
+            flag3 = false;
+       }
+       if(iil4 != iil1 && iil4 != iil2 && iil4 != iil3){
+            irl4 = IndexRotors(iil4);
+            print("irl4 " + irl4);
+       } else {
+            flag4 = false;
+       }
+       
+
 
         //index output logic
        int iol1 = IndexOutputLogic(irl1);
-       int iol2 = IndexOutputLogic(irl2);
-       int iol3 = IndexOutputLogic(irl3);
-       int iol4 = IndexOutputLogic(irl4);
+            print("iol1 " + iol1);
+       if(flag2){
+       iol2 = IndexOutputLogic(irl2);
+            print("iol2 " + iol2);
+       }
+       if(flag3){
+       iol3 = IndexOutputLogic(irl3);
+           print("iol3 " + iol3);
+       }
+       if(flag4){
+       iol4 = IndexOutputLogic(irl4);
+            print("iol4 " + iol4);
+       }
+
+        if(iol2 == iol1)
+       {
+        flag2 = false;
+       }
+       if(iol3 == iol1 || iol3 == iol2)
+       {
+        flag3 = false;
+       }
+       if(iol4 == iol1 || iol4 == iol2 || iol4 == iol3)
+       {
+        flag4 = false;
+       }
 
         //stepping control
-        SteppingControl(iol1,rotor1,rotor2,rotor3,rotor4,rotor5);
-        SteppingControl(iol2, rotor1, rotor2, rotor3, rotor4, rotor5);
-        SteppingControl(iol3, rotor1, rotor2, rotor3, rotor4, rotor5);
-        SteppingControl(iol4, rotor1, rotor2, rotor3, rotor4, rotor5);
+        SteppingControl(iol1);
+        if(flag2){
+        SteppingControl(iol2);
+        }
+        if(flag3){
+        SteppingControl(iol3);
+        }
+        if(flag4){
+        SteppingControl(iol4);
+        }
+
+        printArray(rotor1);
     }
 
     // Rotor Control
@@ -116,6 +146,7 @@ using UnityEngine;
     public void RotateRotor8()
     {
         rotor8 = Rotate(rotor8);
+        //printArray(rotor8);
     }
 
     public void RotateRotor9()
@@ -125,56 +156,63 @@ using UnityEngine;
 
     public char Encrypt(char letter)
     {
+        int offset = (int) 'a';
+
         char swap1 = SearchSwap(rotor1, letter);
-        char swap2 = SearchSwap(rotor2, swap1);
-        char swap3 = SearchSwap(rotor3, swap2);
-        char swap4 = SearchSwap(rotor4, swap3);
-        char swap5 = SearchSwap(rotor5, swap4);
-        return swap5;
+        //print(swap1);
+        int swap2 = SearchByPosition(rotor2, swap1);
+        //print(swap2);
+        int swap3 = SearchByPosition(rotor3, (char) (swap2 + offset));
+        //print(swap3);
+        int swap4 = SearchByPosition(rotor4, (char) (swap3 + offset));
+        //print(swap4);
+        int swap5 = SearchByPosition(rotor5, (char) (swap4 + offset));
+        //print(swap5);
+        return (char) (swap5 + offset);
     }
 
 
 
 //Decryption 
-char Decrypt(char letter, char[,] r1, char[,] r2, char[,] r3, char[,] r4, char[,] r5)
+char Decrypt(char letter)
     {
-        char swap1 = SearchSwapDecrypt(r5, letter);
-        char swap2 = SearchSwapDecrypt(r4, swap1);
-        char swap3 = SearchSwapDecrypt(r3, swap2);
-        char swap4 = SearchSwapDecrypt(r2, swap3);
-        char swap5 = SearchSwapDecrypt(r1, swap4);
+        char swap1 = SearchSwapDecrypt(rotor5, letter);
+        char swap2 = SearchSwapDecrypt(rotor4, swap1);
+        char swap3 = SearchSwapDecrypt(rotor3, swap2);
+        char swap4 = SearchSwapDecrypt(rotor2, swap3);
+        char swap5 = SearchSwapDecrypt(rotor1, swap4);
         return swap5;
     }
 
   //Stepping Control
   //decides which Cipher rotors rotate based on the output from the index output control
-     void  SteppingControl(int step, char[,] r1, char[,] r2, char[,] r3, char[,] r4, char[,] r5) {
+     void  SteppingControl(int step) {
         if (step == 1)
         {
-            Rotate(r1);
+            rotor1 = Rotate(rotor1);
         }
         if(step == 2)
         {
-            Rotate(r2);
+            rotor2 = Rotate(rotor2);
         }
         if(step == 3)
         {
-            Rotate(r3);
+            rotor3 = Rotate(rotor3);
         }
         if (step == 4)
         {
-            Rotate(r4);
+            rotor4 = Rotate(rotor4);
         }
         if (step == 5)
         {
-            Rotate(r5);
+            rotor5 = Rotate(rotor5);
         }
 }
 //IndexOutputLogic
 // input is the outputs of the index rotor bank 
 //output is the stepping control rotor number to be changed
   int IndexOutputLogic( int InputNum) {
-int input = InputNum; 
+int input = InputNum + 1; 
 
 if(input==1||input==10){
     return 1;
@@ -231,12 +269,12 @@ return 0;
 }
 
  //Index rotors swap a number through index rotor arrays
-  int IndexRotors(int indexnumber, int[,] ra, int[,] rb, int[,] rc, int[,] rd, int[,] re) {
-        int swapiil1 = IndexSearchSwap(ra,indexnumber);
-        int swapiil2 = IndexSearchSwap(rb,swapiil1);
-        int swapiil3 = IndexSearchSwap(rc,swapiil2);
-        int swapiil4 = IndexSearchSwap(rd,swapiil3);
-        int swapiil5 = IndexSearchSwap(re,swapiil4);
+  int IndexRotors(int indexnumber) {
+        int swapiil1 = IndexSearchSwap(rotora,indexnumber);
+        int swapiil2 = IndexSwap(rotorb,swapiil1);
+        int swapiil3 = IndexSwap(rotorc,swapiil2);
+        int swapiil4 = IndexSwap(rotord,swapiil3);
+        int swapiil5 = IndexSwap(rotore,swapiil4);
         return swapiil5;
     }
 
@@ -266,14 +304,23 @@ return 0;
         return '-';
     }
     //swap letter through control rotors
-      char LetterSwap(char letter, char[,] r6, char[,] r7, char[,] r8, char[,] r9, char[,] r10)
+      char LetterSwap(char letter)
     {
-        char swap1 = SearchSwap(r6, letter);
-        char swap2 = SearchSwap(r7, swap1);
-        char swap3 = SearchSwap(r8, swap2);
-        char swap4 = SearchSwap(r9, swap3);
-        char swap5 = SearchSwap(r10, swap4);
-        return swap5;
+        int offset = (int) 'a';
+
+        char swap1 = SearchSwap(rotor6, letter);
+        int swap2 = SearchByPosition(rotor7, swap1);
+        int swap3 = SearchByPosition(rotor8, (char) (swap2 + offset));
+        int swap4 = SearchByPosition(rotor9, (char) (swap3 + offset));
+        int swap5 = SearchByPosition(rotor10, (char) (swap4 + offset));
+        return (char) (swap5 + offset);
+
+        // char swap1 = SearchSwap(rotor6, letter);
+        // char swap2 = SearchSwap(rotor7, swap1);
+        // char swap3 = SearchSwap(rotor8, swap2);
+        // char swap4 = SearchSwap(rotor9, swap3);
+        // char swap5 = SearchSwap(rotor10, swap4);
+        // return swap5;
     }
 
       int IndexSearchSwap(int[,] arr, int target)
@@ -287,7 +334,14 @@ return 0;
         }
         return '-';
     }
-      char[,] Rotate(char[,] arr)
+
+
+    int IndexSwap(int[,] arr, int target)
+    {
+        return arr[target, 1];
+    }
+
+    char[,] Rotate(char[,] arr)
     {
         char[,] newarr = new char[26, 26];
         char[,] temp = new char[1, 1];
@@ -303,5 +357,26 @@ return 0;
         return newarr;
     }
 
+public void printArray(char[,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                print(arr[i,j]);
+            }
+        }
+}
+
+public int SearchByPosition(char[,] arr, char c)
+{
+    int offset = (int) 'a';
+    for (int i = 0; i < 26; i++) {
+        if (arr[i,0] == c) {
+            return (int) arr[i,1] - offset;
+        }
+    }
+    return -1;
+}
 
 }

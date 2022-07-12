@@ -34,9 +34,9 @@ public class SimManager : MonoBehaviour
         }
         //print(keystrokes);
         // handle key press
-
+        sim.UpdateRotors();
         char result = sim.Encrypt(key);
-        print(result);
+        //print(result);
     }
 
 }
