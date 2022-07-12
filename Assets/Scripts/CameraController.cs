@@ -9,18 +9,24 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private int camera_speed;
 
-    [SerializeField] private float zoom_speed;
+    private int camera_vert_speed;
+
+    public SimManager sim;
+
+    [SerializeField] private int zoom_speed;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        camera_vert_speed = camera_speed / 2;
+        //sim = (SimManager) gameObject.GetComponent("SimManager");
     }
 
     // Update is called once per frame
     void Update()
     {
         HandleKeyPress();
+        HandleClick();
     }
 
 
@@ -32,19 +38,21 @@ public class CameraController : MonoBehaviour
         
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Translate(Vector3.right * camera_speed * Time.deltaTime);
+            //transform.Translate(Vector3.right * camera_speed * Time.deltaTime);
+            transform.RotateAround(focus.transform.position, Vector3.down, camera_speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Translate(Vector3.left * camera_speed * Time.deltaTime);
+            //transform.Translate(Vector3.left * camera_speed * Time.deltaTime);
+            transform.RotateAround(focus.transform.position, Vector3.up, camera_speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(Vector3.up * camera_speed * Time.deltaTime);
+            transform.Translate(Vector3.up * camera_vert_speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Translate(Vector3.down * camera_speed * Time.deltaTime);
+            transform.Translate(Vector3.down * camera_vert_speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.Z))
         {
@@ -56,4 +64,18 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    void HandleClick()
+    {
+        if (Input.GetMouseButtonDown(0)){ // if left button pressed...
+            Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit)){
+                if(hit.collider != null)
+                {
+                    KeyPress key_script = (KeyPress) hit.collider.gameObject.GetComponent("KeyPress");
+                    sim.KeyPress(key_script.key_value);
+                }
+            }
+        }
+    }
 }
