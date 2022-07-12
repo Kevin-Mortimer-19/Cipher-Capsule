@@ -11,12 +11,15 @@ public class CameraController : MonoBehaviour
 
     private int camera_vert_speed;
 
+    public SimManager sim;
+
     [SerializeField] private int zoom_speed;
 
     // Start is called before the first frame update
     void Start()
     {
         camera_vert_speed = camera_speed / 2;
+        //sim = (SimManager) gameObject.GetComponent("SimManager");
     }
 
     // Update is called once per frame
@@ -70,7 +73,7 @@ public class CameraController : MonoBehaviour
                 if(hit.collider != null)
                 {
                     KeyPress key_script = (KeyPress) hit.collider.gameObject.GetComponent("KeyPress");
-                    print(key_script.key_value);
+                    sim.KeyPress(key_script.key_value);
                 }
             }
         }
