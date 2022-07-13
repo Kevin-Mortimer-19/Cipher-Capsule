@@ -8,7 +8,9 @@ public class SimManager : MonoBehaviour
 
     public sigaba sim;
 
-    public Text output_field;
+    public Text encrypt_output_field;
+
+    public Text decrypt_output_field;
 
     int keystrokes;
 
@@ -39,9 +41,16 @@ public class SimManager : MonoBehaviour
         // handle key press
         sim.UpdateRotors();
         char result = sim.Encrypt(key);
-        char decrypted = sim.Decrypt(result);
+        encrypt_output_field.text = encrypt_output_field.text + result;
+        char decrypted = sim.Decrypt(key);
         //output_field.text = output_field.text + result;
-        output_field.text = output_field.text + decrypted;
+        decrypt_output_field.text = decrypt_output_field.text + decrypted;
+    }
+
+    public void OutputReset()
+    {
+        encrypt_output_field.text = "";
+        decrypt_output_field.text = "";
     }
 
 }

@@ -29,6 +29,60 @@ using UnityEngine;
         int[,] rotord = { { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 } };
         int[,] rotore = { { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 } };
 
+        char[,] rotor1_d = new char[26,2];
+        char[,] rotor2_d = new char[26,2];
+        char[,] rotor3_d = new char[26,2];
+        char[,] rotor4_d = new char[26,2];
+        char[,] rotor5_d = new char[26,2];
+        char[,] rotor6_d = new char[26,2];
+        char[,] rotor7_d = new char[26,2];
+        char[,] rotor8_d = new char[26,2];
+        char[,] rotor9_d = new char[26,2];
+        char[,] rotor10_d = new char[26,2];
+        int[,] rotora_d = new int[10,2];
+        int[,] rotorb_d = new int[10,2];
+        int[,] rotorc_d = new int[10,2];
+        int[,] rotord_d = new int[10,2];
+        int[,] rotore_d = new int[10,2];
+
+        void Start() 
+        {
+        char[,] rotor1_d = (char[,]) rotor1.Clone();
+        char[,] rotor2_d = (char[,]) rotor2.Clone();
+        char[,] rotor3_d = (char[,]) rotor3.Clone();
+        char[,] rotor4_d = (char[,]) rotor4.Clone();
+        char[,] rotor5_d = (char[,]) rotor5.Clone();
+        char[,] rotor6_d = (char[,]) rotor6.Clone();
+        char[,] rotor7_d = (char[,]) rotor7.Clone();
+        char[,] rotor8_d = (char[,]) rotor8.Clone();
+        char[,] rotor9_d = (char[,]) rotor9.Clone();
+        char[,] rotor10_d = (char[,]) rotor10.Clone();
+        int[,] rotora_d = (int[,]) rotora.Clone();
+        int[,] rotorb_d = (int[,]) rotorb.Clone();
+        int[,] rotorc_d = (int[,]) rotorc.Clone();
+        int[,] rotord_d = (int[,]) rotord.Clone();
+        int[,] rotore_d = (int[,]) rotore.Clone();
+        }
+
+        public void ResetRotors()
+        {
+        char[,] rotor1 = (char[,]) rotor1_d.Clone();
+        char[,] rotor2 = (char[,]) rotor2_d.Clone();
+        char[,] rotor3 = (char[,]) rotor3_d.Clone();
+        char[,] rotor4 = (char[,]) rotor4_d.Clone();
+        char[,] rotor5 = (char[,]) rotor5_d.Clone();
+        char[,] rotor6 = (char[,]) rotor6_d.Clone();
+        char[,] rotor7 = (char[,]) rotor7_d.Clone();
+        char[,] rotor8 = (char[,]) rotor8_d.Clone();
+        char[,] rotor9 = (char[,]) rotor9_d.Clone();
+        char[,] rotor10 = (char[,]) rotor10_d.Clone();
+        int[,] rotora = (int[,]) rotora_d.Clone();
+        int[,] rotorb = (int[,]) rotorb_d.Clone();
+        int[,] rotorc = (int[,]) rotorc_d.Clone();
+        int[,] rotord = (int[,]) rotord_d.Clone();
+        int[,] rotore = (int[,]) rotore_d.Clone();
+        }
+
 
       public void UpdateRotors()
     {
