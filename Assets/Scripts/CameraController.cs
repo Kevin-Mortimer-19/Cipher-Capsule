@@ -34,8 +34,6 @@ public class CameraController : MonoBehaviour
 
     void HandleKeyPress()
     {
-        transform.LookAt(focus.transform);
-        
         if (Input.GetKey(KeyCode.RightArrow))
         {
             //transform.Translate(Vector3.right * camera_speed * Time.deltaTime);
@@ -49,18 +47,22 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(Vector3.up * camera_vert_speed * Time.deltaTime);
+            transform.LookAt(focus.transform);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             transform.Translate(Vector3.down * camera_vert_speed * Time.deltaTime);
+            transform.LookAt(focus.transform);
         }
         if (Input.GetKey(KeyCode.Z))
         {
             transform.Translate(Vector3.forward * zoom_speed * Time.deltaTime);
+            transform.LookAt(focus.transform);
         }
         if (Input.GetKey(KeyCode.X))
         {
             transform.Translate(Vector3.back * zoom_speed * Time.deltaTime);
+            transform.LookAt(focus.transform);
         }
     }
 
@@ -78,4 +80,17 @@ public class CameraController : MonoBehaviour
             }
         }
     }
+
+    public void KeyboardPerspective()
+    {
+        transform.position = new Vector3(2.5f, 3f, 2.5f);
+        transform.rotation = Quaternion.Euler(90, 90, 0);
+    }
+
+    public void DefaultPerspective()
+    {
+        transform.position = new Vector3(-3f, 2f, 3f);
+        transform.rotation = Quaternion.Euler(0, 90, 0);
+    }
+
 }
