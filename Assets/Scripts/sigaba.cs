@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-   public class sigaba : MonoBehaviour
+public class sigaba : MonoBehaviour
 {
 
         char[,] rotor6 = { { 'a', 'q' }, { 'b', 'f' }, { 'c', 'o' }, { 'd', 'v' }, { 'e', 'p' }, { 'f', 'z' }, { 'g', 't' }, { 'h', 'd' }, { 'i', 'k' }, { 'j', 'm' }, { 'k', 'w' }, { 'l', 'a' }, { 'm', 'g' }, { 'n', 'b' }, { 'o', 'u' }, { 'p', 'x' }, { 'q', 'i' }, { 'r', 'h' }, { 's', 'r' }, { 't', 'c' }, { 'u', 'y' }, { 'v', 's' }, { 'w', 'n' }, { 'x', 'j' }, { 'y', 'e' }, { 'z', 'l' } };
@@ -45,8 +45,8 @@ using UnityEngine;
         int[,] rotord_d = new int[10,2];
         int[,] rotore_d = new int[10,2];
 
-        void Start() 
-        {
+    void Start() 
+    {
         char[,] rotor1_d = (char[,]) rotor1.Clone();
         char[,] rotor2_d = (char[,]) rotor2.Clone();
         char[,] rotor3_d = (char[,]) rotor3.Clone();
@@ -62,10 +62,10 @@ using UnityEngine;
         int[,] rotorc_d = (int[,]) rotorc.Clone();
         int[,] rotord_d = (int[,]) rotord.Clone();
         int[,] rotore_d = (int[,]) rotore.Clone();
-        }
+    }
 
-        public void ResetRotors()
-        {
+    public void ResetRotors()
+    {
         char[,] rotor1 = (char[,]) rotor1_d.Clone();
         char[,] rotor2 = (char[,]) rotor2_d.Clone();
         char[,] rotor3 = (char[,]) rotor3_d.Clone();
@@ -81,10 +81,10 @@ using UnityEngine;
         int[,] rotorc = (int[,]) rotorc_d.Clone();
         int[,] rotord = (int[,]) rotord_d.Clone();
         int[,] rotore = (int[,]) rotore_d.Clone();
-        }
+    }
 
 
-      public void UpdateRotors()
+    public void UpdateRotors()
     {
         //Control Rotors //need to change
         //stationary
@@ -92,26 +92,18 @@ using UnityEngine;
         //swapping letters through control rotors
         //swap F
         char swapf = LetterSwap('f');
-        //print("swapf " + swapf);
         //swap G
         char swapg = LetterSwap('g');
-        //print("swapg " + swapg);
         //swap H
         char swaph = LetterSwap('h');
-        //print("swaph " + swaph);
         //swap I
         char swapi = LetterSwap('i');
-        //print("swapi " + swapi);
 
       //index input logic
        int iil1 = IndexInputLogic(swapf);
-        //print("iil1 " + iil1);
        int iil2 = IndexInputLogic(swapg);
-       // print("iil2 " + iil2);
        int iil3 = IndexInputLogic(swaph);
-       // print("iil3 " + iil3);
        int iil4 = IndexInputLogic(swapi);
-       // print("iil4 " + iil4);
 
         bool flag2 = true;
         bool flag3 = true;
@@ -123,69 +115,72 @@ using UnityEngine;
         int iol2 = 0;
         int iol3 = 0;
         int iol4 = 0;
+
       //here pass Indexinputlogicnumbers through index rotors
        int irl1 = IndexRotors(iil1);
-            print("irl1 " + irl1);
-       if(iil2 != iil1){
+       if(iil2 != iil1)
+       {
             irl2 = IndexRotors(iil2);
-            print("irl2 " + irl2);
-       } else {
+       } 
+       else 
+       {
             flag2 = false;
        }
-       if(iil3 != iil1 && iil3 != iil2){
+       if(iil3 != iil1 && iil3 != iil2)
+       {
             irl3 = IndexRotors(iil3);
-            print("irl3 " + irl3);
-       } else {
+       } 
+       else 
+       {
             flag3 = false;
        }
-       if(iil4 != iil1 && iil4 != iil2 && iil4 != iil3){
+       if(iil4 != iil1 && iil4 != iil2 && iil4 != iil3)
+       {
             irl4 = IndexRotors(iil4);
-            print("irl4 " + irl4);
-       } else {
+       } 
+       else 
+       {
             flag4 = false;
        }
        
-
-
         //index output logic
-       int iol1 = IndexOutputLogic(irl1);
-            print("iol1 " + iol1);
-       if(flag2){
-       iol2 = IndexOutputLogic(irl2);
-            print("iol2 " + iol2);
-       }
-       if(flag3){
-       iol3 = IndexOutputLogic(irl3);
-           print("iol3 " + iol3);
-       }
-       if(flag4){
-       iol4 = IndexOutputLogic(irl4);
-            print("iol4 " + iol4);
-       }
+        int iol1 = IndexOutputLogic(irl1);
+        if(flag2)
+        {
+            iol2 = IndexOutputLogic(irl2);
+        }
+        if(flag3)
+        {
+            iol3 = IndexOutputLogic(irl3);
+        }
+        if(flag4)
+        {
+            iol4 = IndexOutputLogic(irl4);
+        }
 
         if(iol2 == iol1)
-       {
-        flag2 = false;
-       }
-       if(iol3 == iol1 || iol3 == iol2)
-       {
-        flag3 = false;
-       }
-       if(iol4 == iol1 || iol4 == iol2 || iol4 == iol3)
-       {
-        flag4 = false;
-       }
+        {
+            flag2 = false;
+        }
+        if(iol3 == iol1 || iol3 == iol2)
+        {
+            flag3 = false;
+        }
+        if(iol4 == iol1 || iol4 == iol2 || iol4 == iol3)
+        {
+            flag4 = false;
+        }
 
         //stepping control
         SteppingControl(iol1);
         if(flag2){
-        SteppingControl(iol2);
+            SteppingControl(iol2);
         }
         if(flag3){
-        SteppingControl(iol3);
+            SteppingControl(iol3);
         }
         if(flag4){
-        SteppingControl(iol4);
+            SteppingControl(iol4);
         }
 
         printArray(rotor1);
@@ -200,7 +195,6 @@ using UnityEngine;
     public void RotateRotor8()
     {
         rotor8 = Rotate(rotor8);
-        //printArray(rotor8);
     }
 
     public void RotateRotor9()
@@ -213,15 +207,10 @@ using UnityEngine;
         int offset = (int) 'a';
 
         char swap1 = SearchSwap(rotor1, letter);
-        //print(swap1);
         int swap2 = SearchByPosition(rotor2, swap1);
-        //print(swap2);
         int swap3 = SearchByPosition(rotor3, (char) (swap2 + offset));
-        //print(swap3);
         int swap4 = SearchByPosition(rotor4, (char) (swap3 + offset));
-        //print(swap4);
         int swap5 = SearchByPosition(rotor5, (char) (swap4 + offset));
-        //print(swap5);
         return (char) (swap5 + offset);
     }
 
@@ -230,31 +219,19 @@ using UnityEngine;
 //Decryption 
 public char Decrypt(char letter)
     {
-
         int offset = (int) 'a';
 
         char swap1 = SearchSwapDecrypt(rotor5, letter);
-        //print(swap1);
         int swap2 = SearchByPositionDecrypt(rotor4, swap1);
-        //print(swap2);
         int swap3 = SearchByPositionDecrypt(rotor3, (char) (swap2 + offset));
-        //print(swap3);
         int swap4 = SearchByPositionDecrypt(rotor2, (char) (swap3 + offset));
-        //print(swap4);
         int swap5 = SearchByPositionDecrypt(rotor1, (char) (swap4 + offset));
-        //print(swap5);
         return (char) (swap5 + offset);
-        // char swap1 = SearchSwapDecrypt(rotor5, letter);
-        // char swap2 = SearchSwapDecrypt(rotor4, swap1);
-        // char swap3 = SearchSwapDecrypt(rotor3, swap2);
-        // char swap4 = SearchSwapDecrypt(rotor2, swap3);
-        // char swap5 = SearchSwapDecrypt(rotor1, swap4);
-        // return swap5;
     }
 
   //Stepping Control
   //decides which Cipher rotors rotate based on the output from the index output control
-     void  SteppingControl(int step) {
+    void  SteppingControl(int step) {
         if (step == 1)
         {
             rotor1 = Rotate(rotor1);
@@ -279,65 +256,65 @@ public char Decrypt(char letter)
 //IndexOutputLogic
 // input is the outputs of the index rotor bank 
 //output is the stepping control rotor number to be changed
-  int IndexOutputLogic( int InputNum) {
-int input = InputNum + 1; 
+    int IndexOutputLogic( int InputNum) 
+    {
+        int input = InputNum + 1; 
 
-if(input==1||input==10){
-    return 1;
-}
-if(input==8||input==9){
-    return 2;
-}
-if(input==6||input==7){
-    return 3;
-}
-if(input==4||input==5){
-    return 4;
-}
-if(input==2||input==3){
-    return 5;
-}
-return 0;
-}
+        if(input==1||input==10){
+            return 1;
+        }
+        if(input==8||input==9){
+            return 2;
+        }
+        if(input==6||input==7){
+            return 3;
+        }
+        if(input==4||input==5){
+            return 4;
+        }
+        if(input==2||input==3){
+            return 5;
+        }
+        return 0;
+    }
 
 
 //input letter 
 //output input # that letter corresponds to 
-//
-  int IndexInputLogic(char chars) {
-
-if (chars == 'b') {
-    return 2; 
-}
-if (chars == 'c') {
-    return 3; 
-}
-if (chars ==   'd' || chars == 'e') {
-    return 4; 
-}
-if (chars ==   'f' || chars ==  'g' || chars ==  'h'){
-    return 5; 
-}
-if (chars ==   'i' ||  chars == 'j' ||  chars == 'k') {
-    return 6; 
-}
-if (chars ==  'l' || chars == 'm' || chars == 'n' || chars == 'o') {
-    return 7; 
-}
-if (chars ==  'p' || chars == 'q' ||  chars =='r' || chars == 's' || chars == 't') {
-    return 8; 
-}
-if (chars ==  'u' ||  chars == 'v' || chars ==  'w' || chars ==  'x' || chars == 'y' || chars == 'z'){
-    return 9; 
-}
-if (chars ==  'a') {
-    return 10; 
-}
-return 0;
-}
+    int IndexInputLogic(char chars) 
+    {
+        if (chars == 'b') {
+            return 2; 
+        }
+        if (chars == 'c') {
+            return 3; 
+        }
+        if (chars ==   'd' || chars == 'e') {
+            return 4; 
+        }
+        if (chars ==   'f' || chars ==  'g' || chars ==  'h'){
+            return 5; 
+        }
+        if (chars ==   'i' ||  chars == 'j' ||  chars == 'k') {
+            return 6; 
+        }
+        if (chars ==  'l' || chars == 'm' || chars == 'n' || chars == 'o') {
+            return 7; 
+        }
+        if (chars ==  'p' || chars == 'q' ||  chars =='r' || chars == 's' || chars == 't') {
+            return 8; 
+        }
+        if (chars ==  'u' ||  chars == 'v' || chars ==  'w' || chars ==  'x' || chars == 'y' || chars == 'z'){
+            return 9; 
+        }
+        if (chars ==  'a') {
+            return 10; 
+        }
+        return 0;
+    }
 
  //Index rotors swap a number through index rotor arrays
-  int IndexRotors(int indexnumber) {
+    int IndexRotors(int indexnumber) {
         int swapiil1 = IndexSearchSwap(rotora,indexnumber);
         int swapiil2 = IndexSwap(rotorb,swapiil1);
         int swapiil3 = IndexSwap(rotorc,swapiil2);
@@ -349,7 +326,7 @@ return 0;
 
 // search double array only on x axis for a
 // character then returns the y
-  char SearchSwap(char[,] arr, char target)
+    char SearchSwap(char[,] arr, char target)
     {      
         for (int i = 0; i < 26; i++) {
                 if (arr[i,0] == target) {
@@ -360,7 +337,7 @@ return 0;
     }
     // search double array only on x axis for a
     // character then returns the y
-  char SearchSwapDecrypt(char[,] arr, char target)
+    char SearchSwapDecrypt(char[,] arr, char target)
     {
         for (int i = 0; i < arr.GetLength(0); i++)
         {
@@ -372,7 +349,7 @@ return 0;
         return '-';
     }
     //swap letter through control rotors
-      char LetterSwap(char letter)
+    char LetterSwap(char letter)
     {
         int offset = (int) 'a';
 
@@ -382,16 +359,9 @@ return 0;
         int swap4 = SearchByPosition(rotor9, (char) (swap3 + offset));
         int swap5 = SearchByPosition(rotor10, (char) (swap4 + offset));
         return (char) (swap5 + offset);
-
-        // char swap1 = SearchSwap(rotor6, letter);
-        // char swap2 = SearchSwap(rotor7, swap1);
-        // char swap3 = SearchSwap(rotor8, swap2);
-        // char swap4 = SearchSwap(rotor9, swap3);
-        // char swap5 = SearchSwap(rotor10, swap4);
-        // return swap5;
     }
 
-      int IndexSearchSwap(int[,] arr, int target)
+    int IndexSearchSwap(int[,] arr, int target)
     {
         for (int i = 0; i < arr.GetLength(0); i++)
         {
@@ -425,8 +395,8 @@ return 0;
         return newarr;
     }
 
-public void printArray(char[,] arr)
-{
+    public void printArray(char[,] arr)
+    {
     for (int i = 0; i < arr.GetLength(0); i++)
         {
             for (int j = 0; j < arr.GetLength(1); j++)
@@ -434,36 +404,27 @@ public void printArray(char[,] arr)
                 print(arr[i,j]);
             }
         }
-}
-
-public int SearchByPosition(char[,] arr, char c)
-{
-    int offset = (int) 'a';
-    for (int i = 0; i < 26; i++) {
-        if (arr[i,0] == c) {
-            return (int) arr[i,1] - offset;
-        }
     }
-    return -1;
-}
 
-public int SearchByPositionDecrypt(char[,] arr, char c)
-{
-    int offset = (int) 'a';
-    for (int i = 0; i < 26; i++) {
-        if (arr[i,1] == c) {
-            return (int) arr[i,0] - offset;
+    public int SearchByPosition(char[,] arr, char c)
+    {
+        int offset = (int) 'a';
+        for (int i = 0; i < 26; i++) {
+            if (arr[i,0] == c) {
+                return (int) arr[i,1] - offset;
+            }
         }
+        return -1;
     }
-    return -1;
-}
 
-// public void InitializeDecrypt(int keystrokes)
-// {
-//     for(int i = 0; i < keystrokes - 1; i++)
-//     {
-
-//     }
-// }
-
+    public int SearchByPositionDecrypt(char[,] arr, char c)
+    {
+        int offset = (int) 'a';
+        for (int i = 0; i < 26; i++) {
+            if (arr[i,1] == c) {
+                return (int) arr[i,0] - offset;
+            }
+        }
+        return -1;
+    }
 }
