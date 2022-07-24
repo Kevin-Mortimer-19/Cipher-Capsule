@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class SimManager : MonoBehaviour
 {
 
+    public AnimationController anim;
+
     public sigaba sim;
 
     public Text encrypt_output_field;
@@ -51,6 +53,23 @@ public class SimManager : MonoBehaviour
     {
         encrypt_output_field.text = "";
         decrypt_output_field.text = "";
+    }
+
+    public void Spin(int spin_rotor)
+    {
+        anim.Spin(spin_rotor);
+    }
+
+    public void Space(bool encrypt)
+    {
+        if(encrypt)
+        {
+            encrypt_output_field.text += " ";
+        }
+        else
+        {
+            decrypt_output_field.text += " ";
+        }
     }
 
 }

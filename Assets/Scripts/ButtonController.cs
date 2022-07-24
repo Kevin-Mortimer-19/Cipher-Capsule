@@ -19,6 +19,7 @@ public class ButtonController : MonoBehaviour
     bool encrypt;
 
     public Text btext;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,23 +28,34 @@ public class ButtonController : MonoBehaviour
 		btn.onClick.AddListener(TaskOnClick);
 	}
 
-	void TaskOnClick(){
-        sim.OutputReset();
+	void TaskOnClick()
+    {
+        Clear();
 		if(encrypt)
         {
             e_out.SetActive(false);            
             d_out.SetActive(true);
-            btext.text = "Decrypt";
+            btext.text = "Decrypt Mode";
             encrypt = false;
-            machine.ResetRotors();
         } else {
             e_out.SetActive(true);            
             d_out.SetActive(false);
-            btext.text = "Encrypt";
+            btext.text = "Encrypt Mode";
             encrypt = true;
-            machine.ResetRotors();
         }
 	}
+
+
+    public void Clear()
+    {
+        sim.OutputReset();
+        machine.ResetRotors();
+    }
+
+    public void Space()
+    {
+        sim.Space(encrypt);
+    }
 
     // Update is called once per frame
     void Update()

@@ -5,45 +5,47 @@ using UnityEngine;
 public class sigaba : MonoBehaviour
 {
 
-        char[,] rotor6 = { { 'a', 'q' }, { 'b', 'f' }, { 'c', 'o' }, { 'd', 'v' }, { 'e', 'p' }, { 'f', 'z' }, { 'g', 't' }, { 'h', 'd' }, { 'i', 'k' }, { 'j', 'm' }, { 'k', 'w' }, { 'l', 'a' }, { 'm', 'g' }, { 'n', 'b' }, { 'o', 'u' }, { 'p', 'x' }, { 'q', 'i' }, { 'r', 'h' }, { 's', 'r' }, { 't', 'c' }, { 'u', 'y' }, { 'v', 's' }, { 'w', 'n' }, { 'x', 'j' }, { 'y', 'e' }, { 'z', 'l' } };
-        //medium
-        char[,] rotor7 = { { 'a', 'l' }, { 'b', 'd' }, { 'c', 'v' }, { 'd', 'q' }, { 'e', 'h' }, { 'f', 's' }, { 'g', 'w' }, { 'h', 'z' }, { 'i', 'g' }, { 'j', 'f' }, { 'k', 'e' }, { 'l', 'y' }, { 'm', 't' }, { 'n', 'c' }, { 'o', 'r' }, { 'p', 'i' }, { 'q', 'p' }, { 'r', 'o' }, { 's', 'b' }, { 't', 'j' }, { 'u', 'x' }, { 'v', 'k' }, { 'w', 'n' }, { 'x', 'a' }, { 'y', 'u' }, { 'z', 'm' } };
-        //fast
-        char[,] rotor8 = { { 'a', 'y' }, { 'b', 'u' }, { 'c', 'd' }, { 'd', 'e' }, { 'e', 't' }, { 'f', 'f' }, { 'g', 'b' }, { 'h', 'k' }, { 'i', 'w' }, { 'j', 'o' }, { 'k', 's' }, { 'l', 'v' }, { 'm', 'm' }, { 'n', 'r' }, { 'o', 'g' }, { 'p', 'x' }, { 'q', 'i' }, { 'r', 'n' }, { 's', 'q' }, { 't', 'l' }, { 'u', 'a' }, { 'v', 'z' }, { 'w', 'j' }, { 'x', 'h' }, { 'y', 'p' }, { 'z', 'c' } };
-        //slow
-        char[,] rotor9 = { { 'a', 'c' }, { 'b', 'j' }, { 'c', 's' }, { 'd', 'g' }, { 'e', 'x' }, { 'f', 'o' }, { 'g', 'q' }, { 'h', 'p' }, { 'i', 'd' }, { 'j', 'w' }, { 'k', 'r' }, { 'l', 'l' }, { 'm', 'f' }, { 'n', 'z' }, { 'o', 'y' }, { 'p', 'a' }, { 'q', 'e' }, { 'r', 'n' }, { 's', 'v' }, { 't', 'i' }, { 'u', 'm' }, { 'v', 'k' }, { 'w', 'h' }, { 'x', 'b' }, { 'y', 'u' }, { 'z', 't' } };
-        //stationary
-        char[,] rotor10 = { { 'a', 'h' }, { 'b', 'b' }, { 'c', 'y' }, { 'd', 'w' }, { 'e', 'p' }, { 'f', 'm' }, { 'g', 'c' }, { 'h', 'i' }, { 'i', 'j' }, { 'j', 'a' }, { 'k', 'z' }, { 'l', 'o' }, { 'm', 'k' }, { 'n', 'v' }, { 'o', 's' }, { 'p', 'r' }, { 'q', 'e' }, { 'r', 'f' }, { 's', 'd' }, { 't', 'n' }, { 'u', 'g' }, { 'v', 'q' }, { 'w', 'l' }, { 'x', 'x' }, { 'y', 't' }, { 'z', 'u' } };
+    public SimManager manager;
 
-        //Cipher Rotors
-        char[,] rotor1 = { { 'a', 'd' }, { 'b', 'g' }, { 'c', 'h' }, { 'd', 'j' }, { 'e', 'l' }, { 'f', 'q' }, { 'g', 'a' }, { 'h', 'p' }, { 'i', 'v' }, { 'j', 'z' }, { 'k', 'w' }, { 'l', 'b' }, { 'm', 'y' }, { 'n', 'u' }, { 'o', 'c' }, { 'p', 't' }, { 'q', 'm' }, { 'r', 'i' }, { 's', 'x' }, { 't', 'e' }, { 'u', 'o' }, { 'v', 'n' }, { 'w', 'f' }, { 'x', 'r' }, { 'y', 's' }, { 'z', 'k' } };
-        char[,] rotor2 = { { 'a', 'e' }, { 'b', 'c' }, { 'c', 'v' }, { 'd', 's' }, { 'e', 'g' }, { 'f', 'n' }, { 'g', 'h' }, { 'h', 'x' }, { 'i', 'i' }, { 'j', 'w' }, { 'k', 'o' }, { 'l', 'l' }, { 'm', 'a' }, { 'n', 't' }, { 'o', 'r' }, { 'p', 'y' }, { 'q', 'm' }, { 'r', 'k' }, { 's', 'd' }, { 't', 'b' }, { 'u', 'p' }, { 'v', 'q' }, { 'w', 'z' }, { 'x', 'f' }, { 'y', 'j' }, { 'z', 'u' } };
-        char[,] rotor3 = { { 'a', 'v' }, { 'b', 'u' }, { 'c', 'b' }, { 'd', 'y' }, { 'e', 'w' }, { 'f', 'f' }, { 'g', 'e' }, { 'h', 't' }, { 'i', 'z' }, { 'j', 'j' }, { 'k', 'i' }, { 'l', 'o' }, { 'm', 'g' }, { 'n', 'l' }, { 'o', 'a' }, { 'p', 'h' }, { 'q', 'c' }, { 'r', 'k' }, { 's', 'd' }, { 't', 'p' }, { 'u', 'r' }, { 'v', 'n' }, { 'w', 's' }, { 'x', 'q' }, { 'y', 'x' }, { 'z', 'm' } };
-        char[,] rotor4 = { { 'a', 's' }, { 'b', 't' }, { 'c', 'z' }, { 'd', 'v' }, { 'e', 'e' }, { 'f', 'r' }, { 'g', 'a' }, { 'h', 'k' }, { 'i', 'h' }, { 'j', 'm' }, { 'k', 'd' }, { 'l', 'p' }, { 'm', 'i' }, { 'n', 'q' }, { 'o', 'b' }, { 'p', 'w' }, { 'q', 'f' }, { 'r', 'x' }, { 's', 'c' }, { 't', 'j' }, { 'u', 'n' }, { 'v', 'o' }, { 'w', 'l' }, { 'x', 'g' }, { 'y', 'y' }, { 'z', 'u' } };
-        char[,] rotor5 = { { 'a', 'n' }, { 'b', 'x' }, { 'c', 'y' }, { 'd', 'd' }, { 'e', 'o' }, { 'f', 'p' }, { 'g', 'b' }, { 'h', 'l' }, { 'i', 'v' }, { 'j', 'u' }, { 'k', 'q' }, { 'l', 'j' }, { 'm', 'r' }, { 'n', 'w' }, { 'o', 'k' }, { 'p', 'f' }, { 'q', 't' }, { 'r', 'e' }, { 's', 'h' }, { 't', 'a' }, { 'u', 'g' }, { 'v', 'c' }, { 'w', 'z' }, { 'x', 'm' }, { 'y', 'i' }, { 'z', 's' } };
+    char[,] rotor6 = { { 'a', 'q' }, { 'b', 'f' }, { 'c', 'o' }, { 'd', 'v' }, { 'e', 'p' }, { 'f', 'z' }, { 'g', 't' }, { 'h', 'd' }, { 'i', 'k' }, { 'j', 'm' }, { 'k', 'w' }, { 'l', 'a' }, { 'm', 'g' }, { 'n', 'b' }, { 'o', 'u' }, { 'p', 'x' }, { 'q', 'i' }, { 'r', 'h' }, { 's', 'r' }, { 't', 'c' }, { 'u', 'y' }, { 'v', 's' }, { 'w', 'n' }, { 'x', 'j' }, { 'y', 'e' }, { 'z', 'l' } };
+    //medium
+    char[,] rotor7 = { { 'a', 'l' }, { 'b', 'd' }, { 'c', 'v' }, { 'd', 'q' }, { 'e', 'h' }, { 'f', 's' }, { 'g', 'w' }, { 'h', 'z' }, { 'i', 'g' }, { 'j', 'f' }, { 'k', 'e' }, { 'l', 'y' }, { 'm', 't' }, { 'n', 'c' }, { 'o', 'r' }, { 'p', 'i' }, { 'q', 'p' }, { 'r', 'o' }, { 's', 'b' }, { 't', 'j' }, { 'u', 'x' }, { 'v', 'k' }, { 'w', 'n' }, { 'x', 'a' }, { 'y', 'u' }, { 'z', 'm' } };
+    //fast
+    char[,] rotor8 = { { 'a', 'y' }, { 'b', 'u' }, { 'c', 'd' }, { 'd', 'e' }, { 'e', 't' }, { 'f', 'f' }, { 'g', 'b' }, { 'h', 'k' }, { 'i', 'w' }, { 'j', 'o' }, { 'k', 's' }, { 'l', 'v' }, { 'm', 'm' }, { 'n', 'r' }, { 'o', 'g' }, { 'p', 'x' }, { 'q', 'i' }, { 'r', 'n' }, { 's', 'q' }, { 't', 'l' }, { 'u', 'a' }, { 'v', 'z' }, { 'w', 'j' }, { 'x', 'h' }, { 'y', 'p' }, { 'z', 'c' } };
+    //slow
+    char[,] rotor9 = { { 'a', 'c' }, { 'b', 'j' }, { 'c', 's' }, { 'd', 'g' }, { 'e', 'x' }, { 'f', 'o' }, { 'g', 'q' }, { 'h', 'p' }, { 'i', 'd' }, { 'j', 'w' }, { 'k', 'r' }, { 'l', 'l' }, { 'm', 'f' }, { 'n', 'z' }, { 'o', 'y' }, { 'p', 'a' }, { 'q', 'e' }, { 'r', 'n' }, { 's', 'v' }, { 't', 'i' }, { 'u', 'm' }, { 'v', 'k' }, { 'w', 'h' }, { 'x', 'b' }, { 'y', 'u' }, { 'z', 't' } };
+    //stationary
+    char[,] rotor10 = { { 'a', 'h' }, { 'b', 'b' }, { 'c', 'y' }, { 'd', 'w' }, { 'e', 'p' }, { 'f', 'm' }, { 'g', 'c' }, { 'h', 'i' }, { 'i', 'j' }, { 'j', 'a' }, { 'k', 'z' }, { 'l', 'o' }, { 'm', 'k' }, { 'n', 'v' }, { 'o', 's' }, { 'p', 'r' }, { 'q', 'e' }, { 'r', 'f' }, { 's', 'd' }, { 't', 'n' }, { 'u', 'g' }, { 'v', 'q' }, { 'w', 'l' }, { 'x', 'x' }, { 'y', 't' }, { 'z', 'u' } };
 
-        //Index Rotors
-        int[,] rotora = { { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 } };
-        int[,] rotorb = { { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 } };
-        int[,] rotorc = { { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 } };
-        int[,] rotord = { { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 } };
-        int[,] rotore = { { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 } };
+    //Cipher Rotors
+    char[,] rotor1 = { { 'a', 'd' }, { 'b', 'g' }, { 'c', 'h' }, { 'd', 'j' }, { 'e', 'l' }, { 'f', 'q' }, { 'g', 'a' }, { 'h', 'p' }, { 'i', 'v' }, { 'j', 'z' }, { 'k', 'w' }, { 'l', 'b' }, { 'm', 'y' }, { 'n', 'u' }, { 'o', 'c' }, { 'p', 't' }, { 'q', 'm' }, { 'r', 'i' }, { 's', 'x' }, { 't', 'e' }, { 'u', 'o' }, { 'v', 'n' }, { 'w', 'f' }, { 'x', 'r' }, { 'y', 's' }, { 'z', 'k' } };
+    char[,] rotor2 = { { 'a', 'e' }, { 'b', 'c' }, { 'c', 'v' }, { 'd', 's' }, { 'e', 'g' }, { 'f', 'n' }, { 'g', 'h' }, { 'h', 'x' }, { 'i', 'i' }, { 'j', 'w' }, { 'k', 'o' }, { 'l', 'l' }, { 'm', 'a' }, { 'n', 't' }, { 'o', 'r' }, { 'p', 'y' }, { 'q', 'm' }, { 'r', 'k' }, { 's', 'd' }, { 't', 'b' }, { 'u', 'p' }, { 'v', 'q' }, { 'w', 'z' }, { 'x', 'f' }, { 'y', 'j' }, { 'z', 'u' } };
+    char[,] rotor3 = { { 'a', 'v' }, { 'b', 'u' }, { 'c', 'b' }, { 'd', 'y' }, { 'e', 'w' }, { 'f', 'f' }, { 'g', 'e' }, { 'h', 't' }, { 'i', 'z' }, { 'j', 'j' }, { 'k', 'i' }, { 'l', 'o' }, { 'm', 'g' }, { 'n', 'l' }, { 'o', 'a' }, { 'p', 'h' }, { 'q', 'c' }, { 'r', 'k' }, { 's', 'd' }, { 't', 'p' }, { 'u', 'r' }, { 'v', 'n' }, { 'w', 's' }, { 'x', 'q' }, { 'y', 'x' }, { 'z', 'm' } };
+    char[,] rotor4 = { { 'a', 's' }, { 'b', 't' }, { 'c', 'z' }, { 'd', 'v' }, { 'e', 'e' }, { 'f', 'r' }, { 'g', 'a' }, { 'h', 'k' }, { 'i', 'h' }, { 'j', 'm' }, { 'k', 'd' }, { 'l', 'p' }, { 'm', 'i' }, { 'n', 'q' }, { 'o', 'b' }, { 'p', 'w' }, { 'q', 'f' }, { 'r', 'x' }, { 's', 'c' }, { 't', 'j' }, { 'u', 'n' }, { 'v', 'o' }, { 'w', 'l' }, { 'x', 'g' }, { 'y', 'y' }, { 'z', 'u' } };
+    char[,] rotor5 = { { 'a', 'n' }, { 'b', 'x' }, { 'c', 'y' }, { 'd', 'd' }, { 'e', 'o' }, { 'f', 'p' }, { 'g', 'b' }, { 'h', 'l' }, { 'i', 'v' }, { 'j', 'u' }, { 'k', 'q' }, { 'l', 'j' }, { 'm', 'r' }, { 'n', 'w' }, { 'o', 'k' }, { 'p', 'f' }, { 'q', 't' }, { 'r', 'e' }, { 's', 'h' }, { 't', 'a' }, { 'u', 'g' }, { 'v', 'c' }, { 'w', 'z' }, { 'x', 'm' }, { 'y', 'i' }, { 'z', 's' } };
 
-        char[,] rotor1_d = new char[26,2];
-        char[,] rotor2_d = new char[26,2];
-        char[,] rotor3_d = new char[26,2];
-        char[,] rotor4_d = new char[26,2];
-        char[,] rotor5_d = new char[26,2];
-        char[,] rotor6_d = new char[26,2];
-        char[,] rotor7_d = new char[26,2];
-        char[,] rotor8_d = new char[26,2];
-        char[,] rotor9_d = new char[26,2];
-        char[,] rotor10_d = new char[26,2];
-        int[,] rotora_d = new int[10,2];
-        int[,] rotorb_d = new int[10,2];
-        int[,] rotorc_d = new int[10,2];
-        int[,] rotord_d = new int[10,2];
-        int[,] rotore_d = new int[10,2];
+    //Index Rotors
+    int[,] rotora = { { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 } };
+    int[,] rotorb = { { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 } };
+    int[,] rotorc = { { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 } };
+    int[,] rotord = { { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 }, { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 } };
+    int[,] rotore = { { 8, 8 }, { 9, 9 }, { 0, 0 }, { 1, 1 }, { 2, 2 }, { 3, 3 }, { 4, 4 }, { 5, 5 }, { 6, 6 }, { 7, 7 } };
+
+    char[,] rotor1_d = new char[26,2];
+    char[,] rotor2_d = new char[26,2];
+    char[,] rotor3_d = new char[26,2];
+    char[,] rotor4_d = new char[26,2];
+    char[,] rotor5_d = new char[26,2];
+    char[,] rotor6_d = new char[26,2];
+    char[,] rotor7_d = new char[26,2];
+    char[,] rotor8_d = new char[26,2];
+    char[,] rotor9_d = new char[26,2];
+    char[,] rotor10_d = new char[26,2];
+    int[,] rotora_d = new int[10,2];
+    int[,] rotorb_d = new int[10,2];
+    int[,] rotorc_d = new int[10,2];
+    int[,] rotord_d = new int[10,2];
+    int[,] rotore_d = new int[10,2];
 
     void Start() 
     {
@@ -99,11 +101,11 @@ public class sigaba : MonoBehaviour
         //swap I
         char swapi = LetterSwap('i');
 
-      //index input logic
-       int iil1 = IndexInputLogic(swapf);
-       int iil2 = IndexInputLogic(swapg);
-       int iil3 = IndexInputLogic(swaph);
-       int iil4 = IndexInputLogic(swapi);
+        //index input logic
+        int iil1 = IndexInputLogic(swapf);
+        int iil2 = IndexInputLogic(swapg);
+        int iil3 = IndexInputLogic(swaph);
+        int iil4 = IndexInputLogic(swapi);
 
         bool flag2 = true;
         bool flag3 = true;
@@ -116,32 +118,32 @@ public class sigaba : MonoBehaviour
         int iol3 = 0;
         int iol4 = 0;
 
-      //here pass Indexinputlogicnumbers through index rotors
-       int irl1 = IndexRotors(iil1);
-       if(iil2 != iil1)
-       {
+        //here pass Indexinputlogicnumbers through index rotors
+        int irl1 = IndexRotors(iil1);
+        if(iil2 != iil1)
+        {
             irl2 = IndexRotors(iil2);
-       } 
-       else 
-       {
+        } 
+        else 
+        {
             flag2 = false;
-       }
-       if(iil3 != iil1 && iil3 != iil2)
-       {
+        }
+        if(iil3 != iil1 && iil3 != iil2)
+        {
             irl3 = IndexRotors(iil3);
-       } 
-       else 
-       {
+        } 
+        else 
+        {
             flag3 = false;
-       }
-       if(iil4 != iil1 && iil4 != iil2 && iil4 != iil3)
-       {
+        }
+        if(iil4 != iil1 && iil4 != iil2 && iil4 != iil3)
+        {
             irl4 = IndexRotors(iil4);
-       } 
-       else 
-       {
+        } 
+        else 
+        {
             flag4 = false;
-       }
+        }
        
         //index output logic
         int iol1 = IndexOutputLogic(irl1);
@@ -183,23 +185,25 @@ public class sigaba : MonoBehaviour
             SteppingControl(iol4);
         }
 
-        printArray(rotor1);
     }
 
     // Rotor Control
     public void RotateRotor7()
     {
         rotor7 = Rotate(rotor7);
+        AnimateRotor(7);
     }
 
     public void RotateRotor8()
     {
         rotor8 = Rotate(rotor8);
+        AnimateRotor(8);
     }
 
     public void RotateRotor9()
     {
         rotor9 = Rotate(rotor9);
+        AnimateRotor(9);
     }
 
     public char Encrypt(char letter)
@@ -235,22 +239,27 @@ public char Decrypt(char letter)
         if (step == 1)
         {
             rotor1 = Rotate(rotor1);
+            AnimateRotor(1);
         }
         if(step == 2)
         {
             rotor2 = Rotate(rotor2);
+            AnimateRotor(2);
         }
         if(step == 3)
         {
             rotor3 = Rotate(rotor3);
+            AnimateRotor(3);
         }
         if (step == 4)
         {
             rotor4 = Rotate(rotor4);
+            AnimateRotor(4);
         }
         if (step == 5)
         {
             rotor5 = Rotate(rotor5);
+            AnimateRotor(5);
         }
 }
 //IndexOutputLogic
@@ -426,5 +435,10 @@ public char Decrypt(char letter)
             }
         }
         return -1;
+    }
+
+    void AnimateRotor(int spin_rotor)
+    {
+        manager.Spin(spin_rotor);
     }
 }
