@@ -15,11 +15,14 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private int zoom_speed;
 
+    bool default_view;
+
     // Start is called before the first frame update
     void Start()
     {
         camera_vert_speed = camera_speed / 2;
         //sim = (SimManager) gameObject.GetComponent("SimManager");
+        default_view = true;
     }
 
     // Update is called once per frame
@@ -34,35 +37,38 @@ public class CameraController : MonoBehaviour
 
     void HandleKeyPress()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if(default_view)
         {
-            //transform.Translate(Vector3.right * camera_speed * Time.deltaTime);
-            transform.RotateAround(focus.transform.position, Vector3.down, camera_speed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            //transform.Translate(Vector3.left * camera_speed * Time.deltaTime);
-            transform.RotateAround(focus.transform.position, Vector3.up, camera_speed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.Translate(Vector3.up * camera_vert_speed * Time.deltaTime);
-            transform.LookAt(focus.transform);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(Vector3.down * camera_vert_speed * Time.deltaTime);
-            transform.LookAt(focus.transform);
-        }
-        if (Input.GetKey(KeyCode.Z))
-        {
-            transform.Translate(Vector3.forward * zoom_speed * Time.deltaTime);
-            transform.LookAt(focus.transform);
-        }
-        if (Input.GetKey(KeyCode.X))
-        {
-            transform.Translate(Vector3.back * zoom_speed * Time.deltaTime);
-            transform.LookAt(focus.transform);
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                //transform.Translate(Vector3.right * camera_speed * Time.deltaTime);
+                transform.RotateAround(focus.transform.position, Vector3.down, camera_speed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                //transform.Translate(Vector3.left * camera_speed * Time.deltaTime);
+                transform.RotateAround(focus.transform.position, Vector3.up, camera_speed * Time.deltaTime);
+            }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                transform.Translate(Vector3.up * camera_vert_speed * Time.deltaTime);
+                transform.LookAt(focus.transform);
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                transform.Translate(Vector3.down * camera_vert_speed * Time.deltaTime);
+                transform.LookAt(focus.transform);
+            }
+            if (Input.GetKey(KeyCode.Tab))
+            {
+                transform.Translate(Vector3.forward * zoom_speed * Time.deltaTime);
+                transform.LookAt(focus.transform);
+            }
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                transform.Translate(Vector3.back * zoom_speed * Time.deltaTime);
+                transform.LookAt(focus.transform);
+            }
         }
     }
 
@@ -85,12 +91,20 @@ public class CameraController : MonoBehaviour
     {
         transform.position = new Vector3(2.5f, 3f, 2.5f);
         transform.rotation = Quaternion.Euler(90, 90, 0);
+        default_view = false;
+    }
+
+    public void RotorPerspective()
+    {
+        transform.position = new Vector3(6f, 6.5f, 4.5f);
+        transform.rotation = Quaternion.Euler(60, 180, 0);
+        default_view = false;
     }
 
     public void DefaultPerspective()
     {
         transform.position = new Vector3(-3f, 2f, 3f);
         transform.rotation = Quaternion.Euler(0, 90, 0);
+        default_view = true;
     }
-
 }
