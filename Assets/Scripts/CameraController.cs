@@ -17,12 +17,16 @@ public class CameraController : MonoBehaviour
 
     bool default_view;
 
+    bool tooClose;
+
+    bool tooFar;
+
     // Start is called before the first frame update
     void Start()
     {
-        camera_vert_speed = camera_speed / 2;
-        //sim = (SimManager) gameObject.GetComponent("SimManager");
+        camera_vert_speed = camera_speed / 4;
         default_view = true;
+        CameraStateCheck();
     }
 
     // Update is called once per frame
@@ -37,6 +41,21 @@ public class CameraController : MonoBehaviour
 
     void HandleKeyPress()
     {
+        float d = Vector3.Distance(transform.position, focus.transform.position);
+
+        if(d > 10)
+        {
+            tooFar = true;
+        }
+        else if(d < 2)
+        {
+            tooClose = true;
+        }
+        else
+        {
+            CameraStateCheck();
+        }
+
         if(default_view)
         {
             if (Input.GetKey(KeyCode.RightArrow))
@@ -59,12 +78,12 @@ public class CameraController : MonoBehaviour
                 transform.Translate(Vector3.down * camera_vert_speed * Time.deltaTime);
                 transform.LookAt(focus.transform);
             }
-            if (Input.GetKey(KeyCode.Tab))
+            if (Input.GetKey(KeyCode.Tab) && !tooClose)
             {
                 transform.Translate(Vector3.forward * zoom_speed * Time.deltaTime);
                 transform.LookAt(focus.transform);
             }
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift) && !tooFar)
             {
                 transform.Translate(Vector3.back * zoom_speed * Time.deltaTime);
                 transform.LookAt(focus.transform);
@@ -89,14 +108,14 @@ public class CameraController : MonoBehaviour
 
     public void KeyboardPerspective()
     {
-        transform.position = new Vector3(2.5f, 3f, 2.5f);
+        transform.position = new Vector3(2.5f, 4f, 2.5f);
         transform.rotation = Quaternion.Euler(90, 90, 0);
         default_view = false;
     }
 
     public void RotorPerspective()
     {
-        transform.position = new Vector3(6f, 6.5f, 4.5f);
+        transform.position = new Vector3(5.75f, 6.75f, 4.75f);
         transform.rotation = Quaternion.Euler(60, 180, 0);
         default_view = false;
     }
@@ -106,5 +125,12 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3(-3f, 2f, 3f);
         transform.rotation = Quaternion.Euler(0, 90, 0);
         default_view = true;
+        transform.LookAt(focus.transform);
+        CameraStateCheck();
+    }
+
+    void CameraStateCheck(){
+        tooClose = false;
+        tooFar = false;
     }
 }

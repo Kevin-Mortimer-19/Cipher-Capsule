@@ -8,7 +8,7 @@ public class KeyboardInput : MonoBehaviour
 
     public SimManager sim;
 
-    public Toggle toggle;
+    //public Toggle toggle;
 
     char lower_bound = 'a';
 
@@ -23,7 +23,8 @@ public class KeyboardInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(toggle.isOn && Input.inputString != "")
+        //if(toggle.isOn && Input.inputString != "")
+        if(Input.inputString != "")
         {
             char[] str = Input.inputString.ToCharArray();
             char c = str[0];
