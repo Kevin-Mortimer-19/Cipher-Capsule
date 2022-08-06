@@ -24,7 +24,6 @@ public class ButtonController : MonoBehaviour
     void Start()
     {
         encrypt = true;
-        //Button btn = (Button) this.gameObject;
 		btn.onClick.AddListener(TaskOnClick);
 	}
 
